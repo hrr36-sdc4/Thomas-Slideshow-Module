@@ -11,6 +11,28 @@
     "knex": "^0.16.3",
     "pg": "^7.8.0"
   },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.1.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "request": "^2.88.0",
+    "sass": "^1.17.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
   "scripts": {
     "start": "node ./server/index.js",
     "build-sass": "sass --watch ./client/src/styles/:./client/dist/styles/",
@@ -36,8 +58,5 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(scss|less)$": "identity-obj-proxy"
     }
-  },
-  "devDependencies": {
-    "webpack-cli": "^3.2.3"
   }
 }
