@@ -1,0 +1,64 @@
+// I had to delete the dev dependencies from package.json to make Elastic Beanstalk work.  
+// Delete this comment and replace package.json with this file.
+
+{
+  "name": "bearbnb_slideshow_module",
+  "version": "1.0.0",
+  "description": "For front-end capstone project",
+  "main": "server/index.js",
+  "dependencies": {
+    "body-parser": "^1.17.0",
+    "cors": "^2.8.5",
+    "express": "^4.15.0",
+    "knex": "^0.16.3",
+    "pg": "^7.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "faker": "^4.1.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.1.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "request": "^2.88.0",
+    "sass": "^1.17.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
+  "scripts": {
+    "start": "node /server/index.js",
+    "build-sass": "sass --watch ./client/src/styles/:./client/dist/styles/",
+    "build-webpack": "webpack --mode development --watch",
+    "build-webpack-production": "webpack --mode production --watch",
+    "test": "jest --forceExit",
+    "seed": "knex seed:run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airbnbers/Thomas-Slideshow-Module.git"
+  },
+  "author": "Thomas Hsu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/airbnbers/Thomas-Slideshow-Module/issues"
+  },
+  "homepage": "https://github.com/airbnbers/Thomas-Slideshow-Module#readme",
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(scss|less)$": "identity-obj-proxy"
+    }
+  }
+}

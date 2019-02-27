@@ -2,7 +2,6 @@ node_modules/
 config.js
 npm-debug.log
 yarn-error.log
-package.devremoved.json
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
