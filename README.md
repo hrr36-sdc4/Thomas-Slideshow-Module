@@ -1,47 +1,14 @@
-# Bearbnb Slideshow Module
-> For Bearbnb sample product page
+# Bearbnb Slideshow Service
+The Slideshow service for Bearbnb—a housing rental service app.
 
-## Related Projects
+## CRUD API Endpoints
 
-  - https://github.com/airbnbers/
+`GET` /rooms/:listingId - Display a room.
 
-## Table of Contents
+`GET` /rooms/:listingId/images - Get a list of all the image objects for a particular room.
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+`POST` /rooms/:listingId - Add a new room.
 
-## Usage
+`PUT` /rooms/:listingId - Update a room.
 
-For deployment:
-Todo - run knex migrate and seed
-npm start
-
-Photo module for Bearbnb mock product page, to be integrated into proxy server
-Add bundle.js into your index.html at https://s3.us-east-2.amazonaws.com/elasticbeanstalk-us-east-2-281924008100/bundle.js
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-## Development
-Compile:
-> npm build-sass
-> npm build-webpack
-
-Seed:
-> npm seed
-
-Test:
-> npm test
-
-Create config.js with your database password.
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
+`DELETE` /rooms/:listingId - Delete a room.
