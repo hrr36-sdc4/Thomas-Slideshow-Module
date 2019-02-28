@@ -8,7 +8,7 @@ yarn-error.log
 !.elasticbeanstalk/*.global.yml
 
 # Sass
-dist/styles/
+client/dist/styles/
 
 # Webpack
 bundle.js
