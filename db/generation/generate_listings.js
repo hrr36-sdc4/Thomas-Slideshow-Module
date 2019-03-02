@@ -13,7 +13,7 @@ const generateListingRecords = (n) => {
       remaining -= 1;
     }
     const stringifiedListings = stringify(['id'], listings);
-    saveRecords(`listings${counter}.csv`, stringifiedListings);
+    saveRecords(`./listing_records/listings${counter}.csv`, stringifiedListings);
     counter += 1;
     listings = [];
   }
