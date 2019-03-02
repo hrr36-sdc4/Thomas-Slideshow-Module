@@ -3,6 +3,7 @@ const faker = require('faker');
 const { getFileNames, stringify, saveRecords } = require('./utils');
 
 let imageFilenames = [];
+const args = process.argv.slice(2).map(Number);
 
 const generateImageRecord = (id, listingId, index) => {
   const randomIndex = Math.floor(Math.random() * imageFilenames.length);
@@ -13,19 +14,19 @@ const generateImageRecord = (id, listingId, index) => {
   return [id, listingId, index, url, description];
 };
 
-const generateImageRecords = (n) => {
+const generateImageRecords = (n, startingId, fileNum) => {
   let images = [];
   let remaining = n;
   let currentId = 0;
-  let currentListingId = 0;
-  let counter = 0;
+  let currentListingId = startingId;
+  let counter = fileNum;
 
   getFileNames(path.join(__dirname, 'stock_photos'))
     .then((fileNames) => {
       imageFilenames = fileNames;
       while (remaining) {
         for (let i = 0; i < 10000; i++) {
-          // generate at least 5 images per listing
+          // generate 5-10 images per listing
           const randomAmount = 5 + Math.floor(Math.random() * 6);
           for (let j = 0; j < randomAmount; j++) {
             images.push(generateImageRecord(currentId, currentListingId, j));
@@ -34,6 +35,7 @@ const generateImageRecords = (n) => {
           currentListingId += 1;
           remaining -= 1;
         }
+
         const stringifiedImages = stringify(['id', 'listingId', 'index', 'url', 'description'], images);
         saveRecords(`./image_records/images${counter}.csv`, stringifiedImages);
         counter += 1;
@@ -45,4 +47,4 @@ const generateImageRecords = (n) => {
     });
 };
 
-generateImageRecords(100000);
+generateImageRecords(100000, args[0], args[1]);
