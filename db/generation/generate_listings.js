@@ -1,8 +1,9 @@
 const fs = require('fs');
+const path = require('path');
 const { stringify } = require('./utils');
 
 const saveListings = (fileName, data) => {
-  fs.writeFile(`./db/generation/${fileName}`, data, (err) => {
+  fs.writeFile(path.join(__dirname, fileName), data, (err) => {
     if (err) throw err;
     console.log('file saved');
   });
