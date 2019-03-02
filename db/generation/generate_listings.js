@@ -1,15 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const { stringify } = require('./utils');
+const { stringify, saveRecords } = require('./utils');
 
-const saveListings = (fileName, data) => {
-  fs.writeFile(path.join(__dirname, fileName), data, (err) => {
-    if (err) throw err;
-    console.log('file saved');
-  });
-};
-
-const generateListingIds = (n) => {
+const generateListingRecords = (n) => {
   let listings = [];
   let remaining = n;
   let currentId = 0;
@@ -22,10 +13,10 @@ const generateListingIds = (n) => {
       remaining -= 1;
     }
     const stringifiedListings = stringify(['id'], listings);
-    saveListings(`listings${counter}.csv`, stringifiedListings);
+    saveRecords(`listings${counter}.csv`, stringifiedListings);
     counter += 1;
     listings = [];
   }
 };
 
-generateListingIds(10000000);
+generateListingRecords(10000000);
