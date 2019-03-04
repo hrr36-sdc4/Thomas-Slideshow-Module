@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Running script..."
 echo "Generating listing records..."
 rm ./listing_records/*
