@@ -37,3 +37,4 @@ bundle.js
 
 stock_photos/
 *.csv
+currentId.txt
