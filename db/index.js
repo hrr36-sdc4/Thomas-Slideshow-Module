@@ -1,13 +1,10 @@
-
-const knexConfig = require('../knexfile');
-let env = 'development';
-let knex = require('knex')(knexConfig[env]);
+const knex = require('knex')(require('../knexfile'));
 
 module.exports = knex;
 
-module.exports.initialize = function () {
-  knex.migrate.latest([knexConfig])
-  .then(function() {
-    return knex.seed.run();
-  })
-}
+module.exports.initialize = () => {
+  knex.migrate.latest()
+    .then(() => {
+      return knex.seed.run();
+    });
+};
