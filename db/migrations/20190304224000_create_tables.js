@@ -1,5 +1,5 @@
 
-exports.up = function (knex, Promise) {
+exports.up = (knex) => {
   return knex.schema.createTable('listing', (table) => {
     table.integer('id').primary();
   }).then(() => {
@@ -13,8 +13,8 @@ exports.up = function (knex, Promise) {
   });
 };
 
-exports.down = function (knex, Promise) {
+exports.down = (knex) => {
   return knex.schema
-  .dropTableIfExists('image')
-  .dropTableIfExists('listing');
+    .dropTableIfExists('image')
+    .dropTableIfExists('listing');
 };
