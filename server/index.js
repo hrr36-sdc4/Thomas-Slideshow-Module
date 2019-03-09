@@ -8,7 +8,7 @@ const port = process.env.PORT || 3001;
 
 app.use('/rooms/:listingId/', express.static(__dirname + '/../client/dist'));
 
-knex.initialize();
+// knex.initialize();
 
 app.get('/rooms/:listingId/images', cors(), (req, res) => {
   console.log('Heard a GET request');
