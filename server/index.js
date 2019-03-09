@@ -28,8 +28,17 @@ app.post('/rooms/:listingId/images', cors(), (req, res) => {
   res.send('');
 });
 
-app.put('/rooms/:listingId/images', cors(), (req, res) => {
-  res.send('');
+app.put('/rooms/:listingId/images/:imageIndex', cors(), (req, res) => {
+  const { url, description } = req.body;
+  knex('image')
+    .where({
+      listing: req.params.listingId,
+      image_index: req.params.imageIndex,
+    })
+    .update({ url, description })
+    .then(() => {
+      res.send('record updated');
+    });
 });
 
 app.delete('/rooms/:listingId/images/:imageIndex', cors(), (req, res) => {
