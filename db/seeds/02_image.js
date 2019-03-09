@@ -10,7 +10,7 @@ const prepareImages = (fileNum) => {
         const formattedRow = {
           id: Number(fields[0]),
           listing: Number(fields[1]),
-          index: Number(fields[2]),
+          image_index: Number(fields[2]),
           url: fields[3],
           description: fields[4],
         };

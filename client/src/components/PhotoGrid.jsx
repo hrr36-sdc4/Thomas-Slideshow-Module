@@ -131,7 +131,7 @@ const PhotoGrid = ({images, selectActivePhoto, scrollToActive, setCaption, copyU
                   <div className="carousel-item active">
                     <img className="d-block" src={images[0].url} alt={images[0].description}/>
                   </div>
-                  {images.slice(1).map(image => <SlideshowImg image={image} key={image.index} setLength={images.length}/>)}
+                  {images.slice(1).map(image => <SlideshowImg image={image} key={image.image_index} setLength={images.length}/>)}
                   {/* {Slideshow carousel controls} */}
                   <a className="carousel-control-prev" href="#carousel-custom" role="button" data-slide="prev" onClick={() => {scrollToActive(); setCaption()}}>
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -146,16 +146,16 @@ const PhotoGrid = ({images, selectActivePhoto, scrollToActive, setCaption, copyU
               {/* {Slideshow carousel indicators} */}
               <div className="caption-filmstrip-wrapper">
                   <div className="caption-hide-wrapper">
-                    <div className="img-caption">{images[0].index + 1}/{images.length}: {images[0].description}</div>
+                    <div className="img-caption">{images[0].image_index + 1}/{images.length}: {images[0].description}</div>
                     <div className="hide-filmstrip-btn" onClick={() => hideFilmstrip()}>Hide photo list<i className="fas fa-sort-down"></i></div>
                   </div>
                   <div className="filmstrip">
                     <ol className="carousel-indicators">
                       <li data-target="#carousel-custom" data-slide-to="0" className="thumbnail active">
                         <img src={images[0].url} alt="images[0].description" className="img-responsive" onClick={() => setCaption()}/>
-                        <p className="invisible-caption" hidden>{images[0].index + 1}/{images.length}: {images[0].description}</p>
+                        <p className="invisible-caption" hidden>{images[0].image_index + 1}/{images.length}: {images[0].description}</p>
                       </li>
-                      {images.slice(1).map(image => <SlideshowThumb image={image} key={image.index} setLength={images.length} setCaption={setCaption}/>)}
+                      {images.slice(1).map(image => <SlideshowThumb image={image} key={image.image_index} setLength={images.length} setCaption={setCaption}/>)}
                     </ol>
                   </div>
               </div>
