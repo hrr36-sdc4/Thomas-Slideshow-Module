@@ -31,20 +31,20 @@ app.post('/rooms/:listingId/images', cors(), (req, res) => {
   knex('image').max('id').first()
     .then((id) => {
       newId = id['max(`id`)'] + 1;
-      knex('image').where({ listing: req.params.listingId }).max('image_index').first()
-        .then((imageIndex) => {
-          newImageIndex = imageIndex['max(`image_index`)'] + 1;
-          knex('image').insert({
-            id: newId,
-            listing: req.params.listingId,
-            image_index: newImageIndex,
-            url: req.body.url,
-            description: req.body.description,
-          })
-            .then(() => {
-              res.send('image saved');
-            });
-        });
+      return knex('image').where({ listing: req.params.listingId }).max('image_index').first();
+    })
+    .then((imageIndex) => {
+      newImageIndex = imageIndex['max(`image_index`)'] + 1;
+      return knex('image').insert({
+        id: newId,
+        listing: req.params.listingId,
+        image_index: newImageIndex,
+        url: req.body.url,
+        description: req.body.description,
+      });
+    })
+    .then(() => {
+      res.send('image saved');
     });
 });
 
