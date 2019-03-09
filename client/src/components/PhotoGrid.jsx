@@ -4,7 +4,7 @@ import SlideshowThumb from './SlideshowThumb.jsx';
 
 const PhotoGrid = ({images, selectActivePhoto, scrollToActive, setCaption, copyUrl, hideFilmstrip}) => (
   <div className="img-grid container-fluid">
-  
+
     {/* {--BUTTONS--} */}
     {/* {Share} */}
     <button type="button" className="share-btn btn btn-light d-none d-sm-block" data-toggle="modal" data-target="#share-modal">
@@ -30,23 +30,23 @@ const PhotoGrid = ({images, selectActivePhoto, scrollToActive, setCaption, copyU
     {/* {--PHOTOS--} */}
     <div className="photogrid row h-100">
       {/* {Main image} */}
-      <div className="col"><img id="image1" src={images[0].imgUrl} onClick={() => {selectActivePhoto(); setCaption()}}/></div> 
+      <div className="col"><img id="image1" src={images[0].url} onClick={() => {selectActivePhoto(); setCaption()}}/></div>
       {/* {Subimages for sizes sm and up} */}
       <div className="col-sm-4 col-lg-3 border-left-0 d-none d-sm-block">
         <div className="row h-50 border-top-0 border-bottom-0 border-left-0">
-          <img id="image2" src={images[1].imgUrl} onClick={() => {selectActivePhoto(); setCaption()}}/>
+          <img id="image2" src={images[1].url} onClick={() => {selectActivePhoto(); setCaption()}}/>
         </div>
         <div className="row h-50 border-bottom-0 border-left-0">
-          <img id="image3" src={images[2].imgUrl} onClick={() => {selectActivePhoto(); setCaption()}}/>
+          <img id="image3" src={images[2].url} onClick={() => {selectActivePhoto(); setCaption()}}/>
         </div>
       </div>
       {/* {Subimages for sizes lg and up} */}
       <div className="col-lg-3 border-0 d-none d-lg-block">
         <div className="row h-50 border-bottom-0">
-          <img id="image4" src={images[3].imgUrl} onClick={() => {selectActivePhoto(); setCaption()}}/>
+          <img id="image4" src={images[3].url} onClick={() => {selectActivePhoto(); setCaption()}}/>
         </div>
         <div className="row h-50">
-          <img id="image5" src={images[4].imgUrl} onClick={() => {selectActivePhoto(); setCaption()}}/>
+          <img id="image5" src={images[4].url} onClick={() => {selectActivePhoto(); setCaption()}}/>
         </div>
       </div>
     </div>
@@ -111,7 +111,7 @@ const PhotoGrid = ({images, selectActivePhoto, scrollToActive, setCaption, copyU
         </div>
       </div>
     </div>
-    
+
     {/* {Slideshow modal} */}
     <div className="slideshow-modal modal fade" id="slideshow-modal" tabIndex="-1" role="dialog" aria-labelledby="slideshow-modal" aria-hidden="true">
       <div className="modal-dialog modal-full" role="document">
@@ -125,13 +125,13 @@ const PhotoGrid = ({images, selectActivePhoto, scrollToActive, setCaption, copyU
 
             {/* {Slideshow carousel} */}
             <div id="carousel-custom" className="carousel slide" data-ride="carousel" data-interval="false">
-              {/* {Slideshow carousel images} */}              
+              {/* {Slideshow carousel images} */}
               <div className="carousel-inner" role="listbox">
                 <div className="image-arrow-wrapper">
                   <div className="carousel-item active">
-                    <img className="d-block" src={images[0].imgUrl} alt={images[0].description}/>
+                    <img className="d-block" src={images[0].url} alt={images[0].description}/>
                   </div>
-                  {images.slice(1).map(image => <SlideshowImg image={image} key={image.imgOrder} setLength={images.length}/>)}
+                  {images.slice(1).map(image => <SlideshowImg image={image} key={image.image_index} setLength={images.length}/>)}
                   {/* {Slideshow carousel controls} */}
                   <a className="carousel-control-prev" href="#carousel-custom" role="button" data-slide="prev" onClick={() => {scrollToActive(); setCaption()}}>
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -141,21 +141,21 @@ const PhotoGrid = ({images, selectActivePhoto, scrollToActive, setCaption, copyU
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="sr-only">Next</span>
                   </a>
-                </div> 
+                </div>
               </div>
               {/* {Slideshow carousel indicators} */}
               <div className="caption-filmstrip-wrapper">
                   <div className="caption-hide-wrapper">
-                    <div className="img-caption">{images[0].imgOrder + 1}/{images.length}: {images[0].description}</div>
+                    <div className="img-caption">{images[0].image_index + 1}/{images.length}: {images[0].description}</div>
                     <div className="hide-filmstrip-btn" onClick={() => hideFilmstrip()}>Hide photo list<i className="fas fa-sort-down"></i></div>
                   </div>
                   <div className="filmstrip">
                     <ol className="carousel-indicators">
                       <li data-target="#carousel-custom" data-slide-to="0" className="thumbnail active">
-                        <img src={images[0].imgUrl} alt="images[0].description" className="img-responsive" onClick={() => setCaption()}/>
-                        <p className="invisible-caption" hidden>{images[0].imgOrder + 1}/{images.length}: {images[0].description}</p>
+                        <img src={images[0].url} alt="images[0].description" className="img-responsive" onClick={() => setCaption()}/>
+                        <p className="invisible-caption" hidden>{images[0].image_index + 1}/{images.length}: {images[0].description}</p>
                       </li>
-                      {images.slice(1).map(image => <SlideshowThumb image={image} key={image.imgOrder} setLength={images.length} setCaption={setCaption}/>)}
+                      {images.slice(1).map(image => <SlideshowThumb image={image} key={image.image_index} setLength={images.length} setCaption={setCaption}/>)}
                     </ol>
                   </div>
               </div>

@@ -40,7 +40,7 @@ const generateImageRecords = (n, startingId, fileNum) => {
               currentListingId += 1;
               remaining -= 1;
             }
-            const stringifiedImages = stringify(['id', 'listingId', 'index', 'url', 'description'], images);
+            const stringifiedImages = stringify(['id', 'listing', 'image_index', 'url', 'description'], images);
             saveRecords(`./image_records/images${counter}.csv`, stringifiedImages);
             counter += 1;
             images = [];
