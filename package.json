@@ -36,7 +36,7 @@
     "webpack-cli": "^3.2.3"
   },
   "scripts": {
-    "start": "node ./server/index.js",
+    "start": "nodemon ./server/index.js",
     "build-sass": "sass --watch ./client/src/styles/:./client/dist/styles/",
     "build-webpack": "webpack --mode development --watch",
     "build-webpack-production": "webpack --mode production --watch",
