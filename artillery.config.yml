@@ -1,16 +1,18 @@
 config:
   target: 'http://localhost:3001'
   phases:
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 1000
+      name: "Warm up the application"
     - duration: 30
       arrivalRate: 1000
-  defaults:
-    headers:
-      x-my-service-auth: '987401838271002188298567'
+      name: "Sustained max load"
 scenarios:
   - flow:
     - get:
-        url: "/rooms/1"
+        url: "/rooms/{{$randomNumber(1,10000)}}"
     - get:
-        url: "/rooms/1/images"
+        url: "/rooms/{{$randomNumber(1,10000)}}/images"
     - post:
-        url: "/rooms/1/images"
+        url: "/rooms/{{$randomNumber(1,10000)}}/images"
