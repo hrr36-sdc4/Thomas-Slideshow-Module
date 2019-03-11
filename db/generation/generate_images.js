@@ -1,6 +1,8 @@
 const path = require('path');
 const faker = require('faker');
-const { getCurrentId, getFileNames, stringify, saveRecords, saveCurrentId } = require('./utils');
+const {
+  getCurrentId, getPhotos, stringify, saveRecords, saveCurrentId,
+} = require('./utils');
 
 let imageFilenames = [];
 const args = process.argv.slice(2).map(Number);
@@ -26,7 +28,7 @@ const generateImageRecords = (n, startingId, fileNum) => {
       currentId = id;
     })
     .then(() => {
-      getFileNames(path.join(__dirname, 'stock_photos'))
+      getPhotos()
         .then((fileNames) => {
           imageFilenames = fileNames;
           while (remaining) {
