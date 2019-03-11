@@ -17,11 +17,12 @@ module.exports.saveRecords = (fileName, data) => {
   });
 };
 
-module.exports.getFileNames = (dir) => {
+module.exports.getPhotos = () => {
   return new Promise((resolve, reject) => {
-    fs.readdir(dir, (err, fileNames) => {
+    fs.readFile(path.join(__dirname, 'photos.txt'), 'utf8', (err, photos) => {
       if (err) reject(err);
-      resolve(fileNames);
+      const listOfPhotos = photos.split('\n');
+      resolve(listOfPhotos);
     });
   });
 };
