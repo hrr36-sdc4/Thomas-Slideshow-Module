@@ -38,3 +38,6 @@ bundle.js
 stock_photos/
 *.csv
 currentId.txt
+
+# New Relic
+newrelic.js

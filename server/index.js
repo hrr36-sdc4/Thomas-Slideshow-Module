@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -5,7 +6,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
 const knex = require('knex')(require('../knexfile'));
-const dbutils = require('../db/dbutils');
 
 const port = process.env.PORT || 3001;
 
@@ -17,35 +17,36 @@ app.use('/rooms/:listingId/', express.static(path.join(__dirname, '/../client/di
 // knex.initialize();
 
 app.get('/rooms/:listingId/images', cors(), (req, res) => {
-  console.log('Heard a GET request');
-  dbutils.fetchImages(req.params.listingId)
-    .then(images => res.send(JSON.stringify(images)))
-    .then(() => console.log('...images sent'))
-    .catch(err => console.log('Database retrieval failed', err));
+  knex.select().from('image').where('listing', req.params.listingId).orderBy('image_index')
+    .then(images => res.send(JSON.stringify(images)));
 });
 
 app.post('/rooms/:listingId/images', cors(), (req, res) => {
-  let newId = undefined;
-  let newImageIndex = undefined;
+  let newId;
+  let newImageIndex;
 
-  knex('image').max('id').first()
-    .then((id) => {
-      newId = id['max(`id`)'] + 1;
-      return knex('image').where({ listing: req.params.listingId }).max('image_index').first();
-    })
-    .then((imageIndex) => {
-      newImageIndex = imageIndex['max(`image_index`)'] + 1;
-      return knex('image').insert({
-        id: newId,
-        listing: req.params.listingId,
-        image_index: newImageIndex,
-        url: req.body.url,
-        description: req.body.description,
+  if (Object.keys(req.body).length) {
+    knex('image').max('id').first()
+      .then((id) => {
+        newId = id['max(`id`)'] + 1;
+        return knex('image').where({ listing: req.params.listingId }).max('image_index').first();
+      })
+      .then((imageIndex) => {
+        newImageIndex = imageIndex['max(`image_index`)'] + 1;
+        return knex('image').insert({
+          id: newId,
+          listing: req.params.listingId,
+          image_index: newImageIndex,
+          url: req.body.url,
+          description: req.body.description,
+        });
+      })
+      .then(() => {
+        res.send('image saved');
       });
-    })
-    .then(() => {
-      res.send('image saved');
-    });
+  } else {
+    res.send('no data received');
+  }
 });
 
 app.put('/rooms/:listingId/images/:imageIndex', cors(), (req, res) => {
