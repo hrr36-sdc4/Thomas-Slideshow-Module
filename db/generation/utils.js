@@ -26,27 +26,3 @@ module.exports.getPhotos = () => {
     });
   });
 };
-
-module.exports.getCurrentId = () => {
-  return new Promise((resolve, reject) => {
-    if (!fs.existsSync(path.join(__dirname, 'currentId.txt'))) {
-      fs.writeFile(path.join(__dirname, 'currentId.txt'), '0', (err) => {
-        if (err) reject(err);
-        resolve(0);
-      });
-    } else {
-      fs.readFile(path.join(__dirname, 'currentId.txt'), 'utf8', (err, id) => {
-        if (err) reject(err);
-        console.log('current id:', id);
-        resolve(Number(id));
-      });
-    }
-  });
-};
-
-module.exports.saveCurrentId = (id) => {
-  fs.writeFile('./currentId.txt', id, (err) => {
-    if (err) throw err;
-    console.log('saved current id:', id);
-  });
-};

@@ -1,6 +1,5 @@
 const { getRecords } = require('../seed_utils');
 
-
 const prepareImages = (fileNum) => {
   const formattedRows = [];
   return getRecords(`./generation/image_records/images${fileNum}.csv`)
@@ -8,11 +7,11 @@ const prepareImages = (fileNum) => {
       images.slice(1, -1).forEach((image) => {
         const fields = image.split(',');
         const formattedRow = {
-          id: Number(fields[0]),
-          listing: Number(fields[1]),
-          image_index: Number(fields[2]),
-          url: fields[3],
-          description: fields[4],
+          id: null,
+          listing: Number(fields[0]),
+          image_index: Number(fields[1]),
+          url: fields[2],
+          description: fields[3],
         };
         formattedRows.push(formattedRow);
       });
