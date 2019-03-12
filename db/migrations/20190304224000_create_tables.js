@@ -1,12 +1,12 @@
 
 exports.up = (knex) => {
   return knex.schema.createTable('listing', (table) => {
-    table.integer('id').primary();
+    table.increments('id');
   }).then(() => {
     return knex.schema.createTable('image', (table) => {
-      table.integer('id').primary();
+      table.increments('id');
       table.integer('listing');
-      table.integer('index');
+      table.integer('image_index');
       table.string('url');
       table.string('description');
     });
