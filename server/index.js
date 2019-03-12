@@ -22,19 +22,14 @@ app.get('/rooms/:listingId/images', cors(), (req, res) => {
 });
 
 app.post('/rooms/:listingId/images', cors(), (req, res) => {
-  let newId;
   let newImageIndex;
 
   if (Object.keys(req.body).length) {
-    knex('image').max('id').first()
-      .then((id) => {
-        newId = id['max(`id`)'] + 1;
-        return knex('image').where({ listing: req.params.listingId }).max('image_index').first();
-      })
+    knex('image').where({ listing: req.params.listingId }).max('image_index').first()
       .then((imageIndex) => {
         newImageIndex = imageIndex['max(`image_index`)'] + 1;
         return knex('image').insert({
-          id: newId,
+          id: null,
           listing: req.params.listingId,
           image_index: newImageIndex,
           url: req.body.url,
@@ -43,6 +38,9 @@ app.post('/rooms/:listingId/images', cors(), (req, res) => {
       })
       .then(() => {
         res.send('image saved');
+      })
+      .catch((err) => {
+        console.error(err);
       });
   } else {
     res.send('no data received');
