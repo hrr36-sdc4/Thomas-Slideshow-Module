@@ -16,8 +16,6 @@ app.use(cors());
 
 app.use('/rooms/:listingId/', express.static(path.join(__dirname, '/../client/dist')));
 
-// knex.initialize();
-
 app.get('/rooms/:listingId/images', (req, res) => {
   knex.select().from('image').where('listing', req.params.listingId).orderBy('image_index')
     .then(images => res.send(JSON.stringify(images)));
