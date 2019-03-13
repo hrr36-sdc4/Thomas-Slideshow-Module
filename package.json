@@ -42,8 +42,8 @@
     "build-webpack": "webpack --mode development --watch",
     "build-webpack-production": "webpack --mode production --watch",
     "test": "jest --forceExit",
-    "migrate": "knex migrate:latest",
-    "seed": "knex seed:run"
+    "generate": "bash ./db/generation/generate.sh",
+    "db:setup": "node ./db/index.js"
   },
   "repository": {
     "type": "git",

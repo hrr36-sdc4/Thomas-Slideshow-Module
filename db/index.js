@@ -1,10 +1,14 @@
 const knex = require('knex')(require('../knexfile'));
 
-module.exports = knex;
-
-module.exports.initialize = () => {
-  knex.migrate.latest()
+const initialize = () => {
+  return knex.migrate.latest()
     .then(() => {
-      return knex.seed.run();
+      return knex.seed.run()
+        .then(() => {
+          console.log('database seeded');
+          process.exit();
+        });
     });
 };
+
+initialize();

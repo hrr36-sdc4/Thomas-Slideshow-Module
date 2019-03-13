@@ -1,12 +1,12 @@
 
 exports.up = (knex) => {
   return knex.schema.table('image', (table) => {
-    table.renameColumn('index', 'image_index');
+    table.index('listing');
   });
 };
 
 exports.down = (knex) => {
   return knex.schema.table('image', (table) => {
-    table.renameColumn('image_index', 'index');
+    table.dropIndex('listing');
   });
 };
