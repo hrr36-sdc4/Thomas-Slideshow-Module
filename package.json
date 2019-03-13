@@ -38,7 +38,7 @@
   },
   "scripts": {
     "start": "nodemon ./server/index.js",
-    "build-sass": "sass --watch ./client/src/styles/:./client/dist/styles/",
+    "build-sass": "sass --watch ./client/src/styles/:./public/styles/",
     "build-webpack": "webpack --mode development --watch",
     "build-webpack-production": "webpack --mode production --watch",
     "test": "jest --forceExit",
