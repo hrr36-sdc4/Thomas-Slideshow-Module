@@ -12,16 +12,18 @@ const port = process.env.PORT || 3001;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(cors());
+
 app.use('/rooms/:listingId/', express.static(path.join(__dirname, '/../client/dist')));
 
 // knex.initialize();
 
-app.get('/rooms/:listingId/images', cors(), (req, res) => {
+app.get('/rooms/:listingId/images', (req, res) => {
   knex.select().from('image').where('listing', req.params.listingId).orderBy('image_index')
     .then(images => res.send(JSON.stringify(images)));
 });
 
-app.post('/rooms/:listingId/images', cors(), (req, res) => {
+app.post('/rooms/:listingId/images', (req, res) => {
   let newImageIndex;
 
   if (Object.keys(req.body).length) {
@@ -47,7 +49,7 @@ app.post('/rooms/:listingId/images', cors(), (req, res) => {
   }
 });
 
-app.put('/rooms/:listingId/images/:imageIndex', cors(), (req, res) => {
+app.put('/rooms/:listingId/images/:imageIndex', (req, res) => {
   const { url, description } = req.body;
   knex('image')
     .where({
@@ -60,7 +62,7 @@ app.put('/rooms/:listingId/images/:imageIndex', cors(), (req, res) => {
     });
 });
 
-app.delete('/rooms/:listingId/images/:imageIndex', cors(), (req, res) => {
+app.delete('/rooms/:listingId/images/:imageIndex', (req, res) => {
   knex('image')
     .where({
       listing: req.params.listingId,
