@@ -21,8 +21,7 @@ coverage
 .grunt
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
-build/
-#dist/
+# build/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
@@ -30,11 +29,13 @@ build/
 !.elasticbeanstalk/*.global.yml
 
 # Sass
-client/dist/styles/
+public/styles/
 
 # Webpack
-bundle.js
+public/app.js
+public/app-server.js
 
+# Data generation
 stock_photos/
 *.csv
 currentId.txt
