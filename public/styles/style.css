@@ -1,0 +1,420 @@
+.navbar {
+  height: 81px;
+}
+.navbar img {
+  margin: 6px 30px auto 5px;
+}
+.navbar a {
+  color: slategray;
+  font-weight: 600;
+}
+
+.search-form {
+  width: 460px;
+  height: 48px;
+  -webkit-box-shadow: -1px 2px 20px -6px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: -1px 2px 20px -6px rgba(0, 0, 0, 0.44);
+  box-shadow: -1px 2px 20px -6px rgba(0, 0, 0, 0.44);
+  padding: 5px;
+  border-radius: 0.25rem;
+}
+.search-form i {
+  color: #484848;
+  position: relative;
+  top: 5px;
+  padding: 0 5px;
+  margin: auto 5px;
+  font-size: 1.2rem;
+}
+.search-form input {
+  position: relative;
+  top: 7px;
+  margin: auto;
+}
+.search-form input::placeholder {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+  .brand-search-wrapper {
+    width: 100%;
+  }
+
+  .search-wrapper {
+    width: 80%;
+  }
+
+  .search-form {
+    width: auto;
+  }
+}
+.search-area {
+  border: none;
+  outline: none;
+}
+
+.photogrid div {
+  background-color: black;
+  border: 2px solid dimgray;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 0px;
+  height: 100%;
+}
+.photogrid div img {
+  min-height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: all 0.45s ease 0s;
+}
+.photogrid div img:hover {
+  transform: scale(1.08);
+  opacity: 1 !important;
+}
+
+.photogrid:hover img {
+  opacity: 0.68;
+}
+
+.share-btn {
+  z-index: 3;
+  position: absolute;
+  top: 106px;
+  right: 140px;
+}
+
+.save-btn {
+  z-index: 3;
+  position: absolute;
+  top: 106px;
+  right: 25px;
+}
+
+.share-btn-xs {
+  z-index: 3;
+  position: absolute;
+  background-color: none !important;
+  color: white !important;
+  top: 106px;
+  right: 70px;
+}
+
+.save-btn-xs {
+  z-index: 3;
+  position: absolute;
+  background-color: none !important;
+  color: white !important;
+  top: 106px;
+  right: 25px;
+}
+
+.view-photo-btn {
+  z-index: 3;
+  position: absolute;
+  right: 25px;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+#share-modal .modal-content, #save-modal .modal-content {
+  padding: 25px;
+}
+#share-modal .modal-header, #save-modal .modal-header {
+  display: block;
+  padding: 0px 0px 20px 0px;
+}
+#share-modal .modal-header p, #save-modal .modal-header p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+#share-modal .close, #save-modal .close {
+  position: static;
+  float: none;
+  margin: 0;
+  padding: 0px 0px 20px 0px;
+  font-size: 2rem;
+  font-weight: 200;
+  outline: none;
+}
+#share-modal .modal-body, #save-modal .modal-body {
+  padding: 0;
+}
+#share-modal .modal-body p, #save-modal .modal-body p {
+  margin: 0;
+}
+#share-modal .modal-body i, #save-modal .modal-body i {
+  color: dimgray;
+}
+#share-modal .modal-body .btn-link, #save-modal .modal-body .btn-link {
+  color: darkcyan;
+}
+#share-modal .modal-body a, #save-modal .modal-body a {
+  font-size: 1.2rem;
+  color: inherit;
+}
+#share-modal .border-bottom, #save-modal .border-bottom {
+  padding: 20px 0px;
+}
+
+#save-modal .facebook {
+  background-color: #4361b7;
+}
+#save-modal .facebook i {
+  color: white !important;
+}
+#save-modal .google {
+  border: 2px solid dimgray;
+  color: black;
+  margin-bottom: 20px;
+}
+#save-modal .google:hover {
+  background-color: white;
+}
+#save-modal .or-wrapper {
+  display: flex;
+  padding-bottom: 20px;
+}
+#save-modal .or-wrapper div {
+  padding: 0;
+}
+#save-modal .or-wrapper .row {
+  height: 50%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#save-modal .or-wrapper .or {
+  margin: auto;
+  padding: 0;
+  text-align: center;
+}
+#save-modal .email-signup {
+  border: none;
+  margin-bottom: 10px;
+  background-color: #ff5a5f;
+}
+#save-modal .email-signup i {
+  color: white !important;
+}
+#save-modal p {
+  text-align: center;
+}
+#save-modal strong {
+  color: darkcyan;
+}
+#save-modal .modal-footer {
+  border: none;
+}
+
+@media (max-width: 576px) {
+  #share-modal .modal-dialog, #save-modal .modal-dialog {
+    margin: 0;
+  }
+  #share-modal .modal-content, #save-modal .modal-content {
+    width: 100vw;
+    min-height: 100vh;
+  }
+}
+.slideshow-modal .modal-full {
+  width: 100%;
+  left: 0;
+  top: 0;
+  margin: 0;
+  height: 100%;
+}
+.slideshow-modal .close {
+  color: white;
+  font-size: 4rem;
+  font-weight: 200;
+  text-shadow: none;
+  outline: none;
+  margin-right: 10px;
+}
+.slideshow-modal .modal-content {
+  background-color: #262626;
+  height: auto;
+  width: 100vw;
+  min-height: 100vh;
+  border-radius: 0;
+}
+.slideshow-modal .modal-dialog {
+  margin: 0;
+}
+.slideshow-modal .modal-header {
+  height: 87px;
+  padding: 0;
+  border: none;
+}
+.slideshow-modal .modal-body {
+  padding: 0;
+}
+.slideshow-modal .modal-footer {
+  border: none;
+}
+.slideshow-modal .carousel-inner {
+  min-height: 100%;
+}
+.slideshow-modal .image-arrow-wrapper {
+  height: 68vh;
+  max-width: 85vh;
+  margin: auto;
+  overflow: hidden;
+}
+@media screen and (max-width: 576px) {
+  .slideshow-modal .image-arrow-wrapper {
+    width: 100vw;
+    height: 60vh;
+  }
+}
+.slideshow-modal .carousel-item {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+.slideshow-modal .carousel-item img {
+  object-fit: fill;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+}
+.slideshow-modal .carousel-item-next, .slideshow-modal .carousel-item-prev {
+  display: flex;
+}
+.slideshow-modal .carousel-item.active {
+  display: flex;
+}
+.slideshow-modal .carousel-caption {
+  position: relative;
+  left: auto;
+  right: auto;
+  padding-bottom: 0px;
+  text-align: left;
+}
+.slideshow-modal .carousel-caption p {
+  font-size: 0.75em;
+  margin-bottom: 0px;
+}
+.slideshow-modal .carousel-control-prev {
+  position: absolute;
+  left: 15px;
+}
+.slideshow-modal .carousel-control-next {
+  position: absolute;
+  right: 15px;
+}
+@media screen and (min-width: 576px) {
+  .slideshow-modal .carousel-control-prev-icon, .slideshow-modal .carousel-control-next-icon {
+    height: 50px;
+    width: 50px;
+  }
+}
+.slideshow-modal .caption-filmstrip-wrapper {
+  max-width: 85vh;
+  margin: auto;
+  overflow: hidden;
+  height: 135px;
+}
+.slideshow-modal .caption-filmstrip-wrapper .img-caption {
+  width: 70%;
+  height: 4em;
+  font-size: 0.75em;
+  margin-top: auto;
+  margin-bottom: 0px;
+  color: white;
+  display: inline-block;
+  vertical-align: top;
+}
+.slideshow-modal .caption-filmstrip-wrapper .hide-filmstrip-btn {
+  width: 30%;
+  height: 2em;
+  font-size: 0.75em;
+  margin: auto;
+  color: white;
+  display: inline-block;
+  text-align: right;
+  cursor: pointer;
+  vertical-align: top;
+}
+@media screen and (max-width: 576px) {
+  .slideshow-modal .caption-filmstrip-wrapper .img-caption {
+    width: 100%;
+  }
+  .slideshow-modal .caption-filmstrip-wrapper .hide-filmstrip-btn {
+    display: none;
+  }
+}
+.slideshow-modal .caption-hide-wrapper {
+  width: 100%;
+  bottom: 70px;
+  transition: margin 0.25s linear;
+  position: initial !important;
+}
+.slideshow-modal .caption-hide-hidden {
+  margin-top: 77px;
+  margin-bottom: 0px;
+  letter-spacing: normal;
+}
+.slideshow-modal .filmstrip {
+  max-width: 85vh;
+  margin: auto;
+  overflow: hidden;
+  -webkit-transition: height 0.25s linear;
+  -moz-transition: height 0.25s linear;
+  -ms-transition: height 0.25s linear;
+  -o-transition: height 0.25s linear;
+  transition: height 0.25s linear;
+  height: 113px;
+  position: absolute;
+  bottom: 0;
+}
+.slideshow-modal .filmstrip .invisible-caption {
+  display: none !important;
+}
+@media screen and (max-width: 576px) {
+  .slideshow-modal .filmstrip {
+    width: 100vw !important;
+  }
+}
+.slideshow-modal .hidden-filmstrip {
+  -webkit-transition: height 0.25s linear;
+  -moz-transition: height 0.25s linear;
+  -ms-transition: height 0.25s linear;
+  -o-transition: height 0.25s linear;
+  transition: height 0.25s linear;
+  height: 0px;
+}
+.slideshow-modal .carousel-indicators {
+  position: static;
+  text-align: left;
+  white-space: nowrap;
+  display: block;
+  margin: 0;
+}
+.slideshow-modal .carousel-indicators li {
+  background-color: #262626;
+  display: inline-block;
+  height: auto;
+  margin: 0 !important;
+  width: auto;
+}
+.slideshow-modal .carousel-indicators li img {
+  margin: 10px;
+  display: block;
+  width: 100px;
+  height: 67px;
+}
+.slideshow-modal .carousel-indicators li .active img {
+  opacity: 1 !important;
+}
+
+/*# sourceMappingURL=style.css.map */

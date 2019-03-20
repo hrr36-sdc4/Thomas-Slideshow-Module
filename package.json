@@ -38,9 +38,10 @@
   },
   "scripts": {
     "start": "nodemon ./server/index.js",
-    "build-sass": "sass --watch ./client/src/styles/:./client/dist/styles/",
-    "build-webpack": "webpack --mode development --watch",
-    "build-webpack-production": "webpack --mode production --watch",
+    "sass:build:dev": "sass --watch ./client/src/styles/:./public/styles/",
+    "sass:build": "sass ./client/src/styles/:./public/styles/",
+    "webpack:build:dev": "webpack --mode development --watch",
+    "webpack:build": "webpack --mode production",
     "test": "jest --forceExit",
     "generate": "bash ./db/generation/generate.sh",
     "db:setup": "node ./db/index.js"

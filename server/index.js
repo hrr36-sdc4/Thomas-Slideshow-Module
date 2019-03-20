@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
-app.use('/rooms/:listingId/', express.static(path.join(__dirname, '/../client/dist')));
+app.use('/rooms/:listingId/', express.static(path.join(__dirname, '/../public')));
 
 app.get('/rooms/:listingId/images', (req, res) => {
   knex.select().from('image').where('listing', req.params.listingId).orderBy('image_index')
